@@ -98,7 +98,8 @@ p { margin: 0 0 1em; }
 /* team */
 .team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 36px; }
 .member { text-align: center; }
-.member img { width: 150px; height: 150px; object-fit: contain; margin: 0 auto 12px; background: #fff; border-radius: 50%; border: 3px solid var(--night); padding: 10px; }
+.member img { width: 170px; height: 170px; object-fit: cover; object-position: 50% 20%; margin: 0 auto 14px; background: #e3ebfa; border-radius: 50%; border: 3px solid var(--night); }
+.inside-note { font-size: 0.95rem; color: var(--muted); margin-top: -0.4em; }
 .member p { color: var(--muted); font-size: 0.98rem; max-width: 32ch; margin: 0 auto; }
 @media (max-width: 700px) { .team { grid-template-columns: 1fr; } }
 
