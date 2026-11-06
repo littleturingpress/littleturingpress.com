@@ -68,6 +68,7 @@ p { margin: 0 0 1em; }
 .btn-primary:hover { background: #ffe07a; }
 .btn-ghost { border-color: #8aa0d6; color: #fff; }
 .btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+.btn-soon { border: 2px dashed #8aa0d6; color: #dbe4f7; cursor: default; }
 .store-note { font-size: 0.9rem; color: #b8c6e8; margin-top: 10px; }
 .store-note a { color: #fff; }
 
