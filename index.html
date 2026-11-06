@@ -7,7 +7,7 @@
 <meta name="description" content="Three mysteries, 24 code-cracking puzzles. Kids aged 8–11 learn binary, ciphers, logic and algorithms with a pencil, no screen needed. Free printable starter pack.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/InterDisplay-Black.woff" as="font" type="font/woff" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=3">
+<link rel="stylesheet" href="assets/site.css?v=4">
 <meta property="og:title" content="The Little Turing Codebreakers & The Glitching Robot">
 <meta property="og:description" content="A screen-free coding mystery for kids 8–11. Crack the codes, open the Evidence Locker, catch the culprit.">
 <meta property="og:image" content="https://littleturingpress.com/assets/img/cover-og.jpg">
@@ -34,11 +34,36 @@
       <div class="cipher" id="cipher">
         <p class="cipher-text" id="cipher-text" aria-live="polite">FUDFN WKH FDVH</p>
         <div class="dial">
-          <label for="dial">Turn the code dial</label>
-          <button class="dial-btn" type="button" id="dial-minus" aria-label="Turn the dial down one step">−</button>
-          <input type="range" id="dial" min="0" max="25" value="0">
-          <output id="dial-out" for="dial">0</output>
-          <button class="dial-btn" type="button" id="dial-plus" aria-label="Turn the dial up one step">+</button>
+          <svg class="wheel" id="wheel" viewBox="-152 -164 304 316" role="slider" tabindex="0" aria-label="Cipher wheel" aria-valuemin="0" aria-valuemax="25" aria-valuenow="0">
+            <defs>
+              <radialGradient id="w-metal" cx="35%" cy="28%" r="85%"><stop offset="0" stop-color="#f4f7fc"/><stop offset=".45" stop-color="#aab5cc"/><stop offset="1" stop-color="#4a5570"/></radialGradient>
+              <radialGradient id="w-face" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#26407c"/><stop offset="1" stop-color="#0a1430"/></radialGradient>
+              <radialGradient id="w-knob" cx="35%" cy="30%" r="80%"><stop offset="0" stop-color="#f6f8fd"/><stop offset=".5" stop-color="#a9b4cc"/><stop offset="1" stop-color="#4b556e"/></radialGradient>
+            </defs>
+            <polygon class="w-ptr" points="0,-149 -10,-163 10,-163"/>
+            <circle r="148" fill="url(#w-metal)"/>
+            <circle r="148" fill="none" stroke="#2b3550" stroke-width="2"/>
+            <g class="w-outer"></g>
+            <circle r="109" fill="#0b1531"/>
+            <g class="w-rot">
+              <circle r="106" fill="url(#w-face)"/>
+              <g class="w-inner"></g>
+              <circle r="64" fill="url(#w-knob)" stroke="#2b3550" stroke-width="2"/>
+              <g class="w-grip"></g>
+            </g>
+            <circle r="38" fill="#0d1a3a" stroke="#2b3550" stroke-width="2"/>
+            <text class="w-cap" y="-8" text-anchor="middle">SHIFT</text>
+            <text class="w-num" id="wheel-num" y="20" text-anchor="middle">0</text>
+            <path class="w-win" d=""/>
+          </svg>
+          <div class="dial-side">
+            <p class="dial-label">Turn the inner wheel</p>
+            <div class="dial-ctl">
+              <button class="dial-btn" type="button" id="dial-minus" aria-label="Turn the wheel back one step">↺</button>
+              <button class="dial-btn" type="button" id="dial-plus" aria-label="Turn the wheel forward one step">↻</button>
+            </div>
+            <p class="dial-key">In the window, secret <b>A</b> means real <b class="real" id="key-real">A</b>.</p>
+          </div>
         </div>
         <p class="cipher-note" id="cipher-note">Bit locked this message. Can you unlock it?</p>
       </div>
@@ -170,6 +195,6 @@
   </div>
 </footer>
 
-<script src="assets/site.js?v=3" defer></script>
+<script src="assets/site.js?v=4" defer></script>
 </body>
 </html>

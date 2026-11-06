@@ -51,12 +51,28 @@ p { margin: 0 0 1em; }
 .cipher { margin-bottom: 28px; }
 .cipher-text { margin: 0; font-family: "Code", monospace; font-size: clamp(2.1rem, 6.2vw, 4.4rem); line-height: 1.05; letter-spacing: 0.08em; color: var(--cyan); word-spacing: 0.15em; min-height: 1.1em; transition: color .25s; }
 .cipher.solved .cipher-text { color: var(--signal); }
-.dial { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
-.dial label { flex-basis: 100%; font-weight: 600; color: #dbe4f7; font-size: 0.95rem; }
-.dial input[type=range] { flex: 1 1 auto; min-width: 0; max-width: 300px; accent-color: var(--signal); }
-.dial output { font-family: "Code", monospace; font-size: 1.1rem; color: var(--signal); min-width: 3ch; }
-.dial-btn { background: transparent; color: #fff; border: 2px solid #5e75b3; border-radius: 50%; width: 38px; height: 38px; font-size: 1.2rem; font-weight: 700; cursor: pointer; flex: none; display: grid; place-items: center; padding: 0; line-height: 1; }
+.dial { display: flex; align-items: center; gap: 22px; margin-top: 18px; flex-wrap: wrap; }
+.wheel { width: 220px; height: auto; flex: none; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab; filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.45)); }
+.wheel:active { cursor: grabbing; }
+.wheel:focus-visible { outline: none; }
+.wheel:focus-visible .w-win { stroke-width: 5; }
+.w-rot { transform-origin: 0 0; }
+.w-ptr { fill: #fff; transition: fill .25s; }
+.w-win { fill: none; stroke: var(--signal); stroke-width: 3.5; stroke-linejoin: round; }
+.w-out { font-family: "Code", monospace; font-size: 15px; fill: #14213d; }
+.w-in { font-family: "Code", monospace; font-size: 14px; fill: #fff; }
+.w-cap { font-family: "Code", monospace; font-size: 10px; fill: #8ea0c8; letter-spacing: .08em; }
+.w-num { font-family: "Code", monospace; font-size: 26px; fill: var(--signal); }
+.cipher.solved .w-ptr { fill: var(--signal); }
+.dial-side { flex: 1 1 180px; min-width: 0; }
+.dial-label { font-weight: 600; color: #dbe4f7; font-size: 0.95rem; margin: 0 0 10px; }
+.dial-ctl { display: flex; gap: 12px; }
+.dial-btn { background: transparent; color: #fff; border: 2px solid #5e75b3; border-radius: 50%; width: 44px; height: 44px; font-size: 1.3rem; font-weight: 700; cursor: pointer; flex: none; display: grid; place-items: center; padding: 0; line-height: 1; }
 .dial-btn:hover { border-color: var(--signal); }
+.dial-key { font-size: 0.88rem; color: #b8c6e8; margin: 14px 0 0; line-height: 1.5; }
+.dial-key b { font-family: "Code", monospace; display: inline-grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 4px; background: #c9d2e4; color: #14213d; margin-right: 2px; }
+.dial-key b.real { background: #1f3570; color: #fff; }
+@media (max-width: 480px) { .wheel { width: min(190px, 50vw); } .dial { gap: 16px; flex-wrap: nowrap; } .dial-side { flex: 1 1 auto; } .dial-key { display: none; } }
 .cipher-note { margin-top: 10px; font-size: 0.95rem; color: #b8c6e8; min-height: 1.6em; }
 .cipher.solved .cipher-note { color: var(--signal); font-weight: 600; }
 
