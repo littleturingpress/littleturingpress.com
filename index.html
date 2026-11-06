@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Little Turing Codebreakers · A screen-free coding mystery for kids 8–11</title>
+<meta name="description" content="Three mysteries, 24 code-cracking puzzles. Kids aged 8–11 learn binary, ciphers, logic and algorithms with a pencil, no screen needed. Free printable starter pack.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/InterDisplay-Black.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:title" content="The Little Turing Codebreakers & The Glitching Robot">
+<meta property="og:description" content="A screen-free coding mystery for kids 8–11. Crack the codes, open the Evidence Locker, catch the culprit.">
+<meta property="og:image" content="https://littleturingpress.com/assets/img/cover-og.jpg">
+<meta property="og:url" content="https://littleturingpress.com/">
+<meta property="og:type" content="book">
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="./">Little <span>Turing</span> Press</a>
+    <nav class="nav" aria-label="Main">
+      <a href="#book">The book</a>
+      <a href="#free">Free puzzles</a>
+      <a href="#parents">Parents &amp; teachers</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="book">
+  <div class="wrap">
+    <div>
+      <div class="cipher" id="cipher">
+        <p class="cipher-text" id="cipher-text" aria-live="polite">FUDFN WKH FDVH</p>
+        <div class="dial">
+          <button class="dial-btn" type="button" id="dial-minus" aria-label="Turn the dial down one step">−</button>
+          <label for="dial">Turn the code dial</label>
+          <input type="range" id="dial" min="0" max="25" value="0">
+          <output id="dial-out" for="dial">0</output>
+          <button class="dial-btn" type="button" id="dial-plus" aria-label="Turn the dial up one step">+</button>
+        </div>
+        <p class="cipher-note" id="cipher-note">Bit locked this message. Can you unlock it?</p>
+      </div>
+
+      <h1>The Little Turing Codebreakers &amp; The Glitching Robot</h1>
+      <p class="sub">A crown vanishes from a locked vault. Robots go wild at the science fair. A skyscraper races towards a midnight blackout. Kids aged 8–11 crack 24 puzzles to find out who did it, using real computer science and just a pencil.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://www.amazon.com/s?k=Little+Turing+Codebreakers+Glitching+Robot" rel="noopener">Buy the paperback on Amazon</a>
+        <a class="btn btn-ghost" href="#free">Get the free starter pack</a>
+      </div>
+      <p class="store-note">In Germany or Europe? <a href="https://www.amazon.de/s?k=Little+Turing+Codebreakers+Glitching+Robot" rel="noopener">Buy on Amazon.de</a> · <a href="https://www.amazon.co.uk/s?k=Little+Turing+Codebreakers+Glitching+Robot" rel="noopener">Amazon.co.uk</a></p>
+    </div>
+    <img class="cover" src="assets/img/cover.webp" width="900" height="1350" alt="Book cover: Bit the robot holding a magnifying glass, with Leo and Poppy, above the London skyline at night.">
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap">
+    <h2>How a case works</h2>
+    <p class="lead measure">Every case has four suspects and eight puzzles. Only one suspect is guilty. Your child is the detective.</p>
+    <ol class="steps">
+      <li><h3>Read the case file</h3><p>Study the map, meet the suspects and listen to what each one says.</p></li>
+      <li><h3>Crack a puzzle</h3><p>Bit the robot explains one computer-science idea, with an example. Then it's your turn.</p></li>
+      <li><h3>Open the Evidence Locker</h3><p>The answer is the name of a drawer. Inside is a clue. Wrong answers open decoy drawers!</p></li>
+      <li><h3>Name the culprit</h3><p>Cross out suspects until only one is left. Then fill in the case board.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="paper plain">
+  <div class="wrap">
+    <h2>Three cases</h2>
+    <p class="lead measure">Each case gets a little harder. Case 1 is gentle. Case 3 is a real challenge.</p>
+    <div class="cases">
+      <article class="case">
+        <img src="assets/img/case1.webp" width="1100" height="467" alt="Leo, Poppy and Bit at the empty display case in a museum vault." loading="lazy">
+        <h3>The Clockwork Crown Heist</h3>
+        <p>The lights go out at a museum gala for 90 seconds. When they come back on, the Gear-Crown is gone.</p>
+        <p class="topics">Binary, Caesar cipher, logic gates, IF/ELSE, shortest paths</p>
+      </article>
+      <article class="case">
+        <img src="assets/img/case2.webp" width="1100" height="467" alt="Robots going wild in a school gym while Poppy finds a note by the router." loading="lazy">
+        <h3>The Sabotaged Science Fair</h3>
+        <p>Someone plugged a sneaky USB stick into the school router. Now the robots are out of control.</p>
+        <p class="topics">Pigpen cipher, bubble sort, ASCII, coordinates, hexadecimal, loops</p>
+      </article>
+      <article class="case">
+        <img src="assets/img/case3.webp" width="1100" height="467" alt="Leo plugs Bit into a control desk at the top of a dark skyscraper." loading="lazy">
+        <h3>The Smart-Tower Blackout</h3>
+        <p>London's greenest skyscraper locks itself down. At midnight, all 64 floors go dark.</p>
+        <p class="topics">Binary search, stacks, parity bits, run-length encoding, sequences</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap">
+    <h2>Meet the Codebreakers</h2>
+    <div class="team">
+      <div class="member"><img src="assets/img/leo.webp" width="270" height="270" alt="Leo, a boy with glasses holding a notebook." loading="lazy"><h3>Leo Turing, 10</h3><p>The pattern spotter. He breaks big problems into small steps and never skips his working.</p></div>
+      <div class="member"><img src="assets/img/poppy.webp" width="270" height="270" alt="Poppy, a girl with goggles holding a cipher wheel." loading="lazy"><h3>Poppy Chen, 9</h3><p>The code cracker. She reads secret messages faster than most people read a menu.</p></div>
+      <div class="member"><img src="assets/img/bit.webp" width="270" height="270" alt="Bit, a small robot with a screen for a face, waving." loading="lazy"><h3>Bit</h3><p>A pocket robot, brilliant at maths, but static makes it glitch. Always check what Bit says!</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="freebie" id="free">
+  <div class="wrap">
+    <img src="assets/img/bit-drawer.webp" width="500" height="500" alt="Bit the robot popping out of a filing drawer full of papers." loading="lazy">
+    <div>
+      <h2>Free Codebreaker Starter Pack</h2>
+      <p class="measure">Four new puzzles to print at home or in class, with an answer page. Not in the book, so it's a perfect try-before-you-buy.</p>
+      <ul>
+        <li>Unlock Bit's secret welcome message</li>
+        <li>Read a name tag written in binary</li>
+        <li>Decode Poppy's pigpen note</li>
+        <li>Solve a mini logic puzzle</li>
+      </ul>
+      <a class="btn btn-primary" href="assets/Codebreaker-Starter-Pack.pdf" download>Download the starter pack (PDF, 2 pages)</a>
+    </div>
+  </div>
+</section>
+
+<section class="paper plain" id="parents">
+  <div class="wrap">
+    <h2>For parents and teachers</h2>
+    <p class="lead measure">Real computer-science ideas, taught through stories. Children solve short puzzles, then use the answers to rule out suspects. No device needed.</p>
+    <div class="two">
+      <div>
+        <h3>What children practise</h3>
+        <ul class="topic-list">
+          <li>Binary and hexadecimal</li><li>Caesar and pigpen ciphers</li><li>Logic gates</li><li>IF / ELSE decisions</li>
+          <li>Loops</li><li>Sorting and searching</li><li>Stacks</li><li>Parity bits</li>
+          <li>Coordinates</li><li>Checking AI answers</li><li>Logic grids</li><li>Number patterns</li>
+        </ul>
+      </div>
+      <div>
+        <h3>The details</h3>
+        <ul class="facts">
+          <li><b>Ages</b>8 to 11</li>
+          <li><b>Format</b>Paperback, 100 pages, 6 × 9 in</li>
+          <li><b>You need</b>A pencil and an eraser</li>
+          <li><b>Time per case</b>About 60 to 90 minutes</li>
+          <li><b>Help built in</b>A hint for every puzzle, plus a full answer key</li>
+          <li><b>Extras</b>24 warm-ups, a glossary, bonus puzzles and a diploma</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="paper">
+  <div class="wrap author">
+    <h2>Why I wrote this book</h2>
+    <blockquote>
+      <p>I'm a software engineer and a dad. At home, my favourite job is making puzzles for my 8-year-old son. He always asked for "just one more!", and those puzzles became this book. I want children to discover that computer science is not only about screens. It's about thinking clearly, asking good questions, and having fun with a pencil and paper.</p>
+      <p><b>Chinar Kakutsey</b> · <a href="https://chinarkakutsey.com">chinarkakutsey.com</a></p>
+    </blockquote>
+  </div>
+</section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div>© 2026 Chinar Kakutsey · Little Turing Press<br>Questions, school orders or review copies: <a href="mailto:hello@littleturingpress.com">hello@littleturingpress.com</a></div>
+    <nav aria-label="Legal"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz / Privacy</a></nav>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>
