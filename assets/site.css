@@ -52,10 +52,10 @@ p { margin: 0 0 1em; }
 .cipher-text { margin: 0; font-family: "Code", monospace; font-size: clamp(2.1rem, 6.2vw, 4.4rem); line-height: 1.05; letter-spacing: 0.08em; color: var(--cyan); word-spacing: 0.15em; min-height: 1.1em; transition: color .25s; }
 .cipher.solved .cipher-text { color: var(--signal); }
 .dial { display: flex; align-items: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
-.dial label { font-weight: 600; color: #dbe4f7; font-size: 0.95rem; }
-.dial input[type=range] { width: min(260px, 60vw); accent-color: var(--signal); }
+.dial label { flex-basis: 100%; font-weight: 600; color: #dbe4f7; font-size: 0.95rem; }
+.dial input[type=range] { flex: 1 1 auto; min-width: 0; max-width: 300px; accent-color: var(--signal); }
 .dial output { font-family: "Code", monospace; font-size: 1.1rem; color: var(--signal); min-width: 3ch; }
-.dial-btn { background: transparent; color: #fff; border: 2px solid #5e75b3; border-radius: 50%; width: 38px; height: 38px; font-size: 1.2rem; font-weight: 700; cursor: pointer; }
+.dial-btn { background: transparent; color: #fff; border: 2px solid #5e75b3; border-radius: 50%; width: 38px; height: 38px; font-size: 1.2rem; font-weight: 700; cursor: pointer; flex: none; display: grid; place-items: center; padding: 0; line-height: 1; }
 .dial-btn:hover { border-color: var(--signal); }
 .cipher-note { margin-top: 10px; font-size: 0.95rem; color: #b8c6e8; min-height: 1.6em; }
 .cipher.solved .cipher-note { color: var(--signal); font-weight: 600; }
