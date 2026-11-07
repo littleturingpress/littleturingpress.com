@@ -126,6 +126,8 @@ p { margin: 0 0 1em; }
 .freebie img { width: min(300px, 70vw); justify-self: center; }
 .freebie .btn-primary { background: var(--night); color: #fff; }
 .freebie .btn-primary:hover { background: var(--ink); }
+.app-note { margin-top: 18px; font-size: 0.98rem; }
+.app-note a { font-weight: 700; }
 .freebie ul { margin: 0 0 1.2em; padding-left: 1.2em; }
 @media (max-width: 760px) { .freebie .wrap { grid-template-columns: 1fr; } }
 
