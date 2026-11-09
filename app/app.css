@@ -191,3 +191,7 @@ textarea.txt { resize: vertical; }
 .confetti i { position: absolute; top: -12px; width: 9px; height: 14px; border-radius: 2px; animation: fall 1.8s ease-in forwards; }
 @keyframes fall { to { transform: translateY(110vh) rotate(540deg); } }
 @media (prefers-reduced-motion: reduce) { .confetti { display: none; } }
+
+.social{display:flex;gap:10px;flex-wrap:wrap;margin-top:-4px}
+.social a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#0d1a3a}
+.social svg{width:21px;height:21px;fill:#fff}
