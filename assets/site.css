@@ -149,6 +149,11 @@ p { margin: 0 0 1em; }
 .site-foot a { color: #fff; }
 .site-foot nav { display: flex; gap: 18px; }
 
+.site-foot .social { align-items: center; justify-content: flex-start; gap: 10px; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(184,198,232,.2); }
+.site-foot .social span { font-weight: 700; color: var(--signal); margin-right: 4px; }
+.site-foot .social a { color: #fff; text-decoration: none; font-weight: 600; font-size: .92rem; border: 1.5px solid rgba(184,198,232,.35); border-radius: 999px; padding: 6px 14px; }
+.site-foot .social a:hover { border-color: var(--signal); color: var(--signal); }
+
 /* legal pages */
 .legal { padding: 56px 0 80px; background: #fff; }
 .legal h1 { font-size: 2.2rem; }

@@ -344,6 +344,7 @@
       <article class="card prose"><h2>For parents and teachers</h2>
         <p>This app is made by <b>Chinar Kakutsey</b>, a software engineer and dad, and the author of the Little Turing Codebreakers books.</p>
         <p><b>No ads. No tracking. No sign-up.</b> Progress is saved only on this device. The app does not collect any personal data.</p>
+        <p><b>Follow us (for grown-ups):</b> <a href="https://www.youtube.com/@littleturingpress" target="_blank" rel="noopener">YouTube</a> · <a href="https://www.instagram.com/littleturingpress/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.tiktok.com/@littleturingpress" target="_blank" rel="noopener">TikTok</a> · <a href="https://www.facebook.com/profile.php?id=61596338522125" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.pinterest.com/littleturingpress/" target="_blank" rel="noopener">Pinterest</a></p>
         <p class="small"><a href="https://littleturingpress.com/impressum.html" target="_blank" rel="noopener">Impressum</a> · <a href="https://littleturingpress.com/datenschutz.html" target="_blank" rel="noopener">Datenschutz / Privacy</a></p></article>`;
   };
 
