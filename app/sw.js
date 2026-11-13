@@ -1,6 +1,6 @@
 // Offline support: keep the app files on the device. Bump VERSION on every release.
-const VERSION = "ltc-app-3";
-const FILES = ["./", "index.html", "app.css?v=2", "extras.js?v=1", "content.js?v=1", "app.js?v=3", "manifest.webmanifest",
+const VERSION = "ltc-app-4";
+const FILES = ["./", "index.html", "app.css?v=2", "extras.js?v=1", "content.js?v=1", "app.js?v=4", "manifest.webmanifest",
   "icons/icon-192.png", "../assets/img/bit.webp", "../assets/img/cover.webp", "../assets/img/bit-drawer.webp", "../assets/img/case2.webp",
   "../assets/fonts/InterDisplay-Black.woff", "../assets/fonts/Inter-Regular.woff", "../assets/fonts/Inter-SemiBold.woff", "../assets/fonts/Inter-Bold.woff", "../assets/fonts/DejaVuSansMono-Bold.woff"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)).then(() => self.skipWaiting())); });
