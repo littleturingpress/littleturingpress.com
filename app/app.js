@@ -336,8 +336,7 @@
     return `<h1 class="page">Our books</h1>
       <article class="card book"><img src="${img("cover.webp")}" width="900" height="1350" alt="Cover of The Little Turing Codebreakers and The Glitching Robot">
         <div><span class="tagline">${b.meta}</span><h2>${b.title}</h2><p>${b.blurb}</p>
-        <a class="btn" href="https://www.amazon.com/dp/B0HQVKLBCB" target="_blank" rel="noopener">Buy on Amazon</a>
-        <a class="btn btn-ghost" href="https://www.amazon.de/dp/B0HQVKLBCB" target="_blank" rel="noopener">Amazon.de</a>
+        <a class="btn" href="https://mybook.to/aDLbyq" target="_blank" rel="noopener">Buy on Amazon</a>
         <a class="btn" href="https://littleturingpress.com/#free" target="_blank" rel="noopener">Free puzzle pack (PDF)</a>
         <a class="link" href="https://littleturingpress.com" target="_blank" rel="noopener">Visit the book's website</a></div></article>
       <article class="card soon"><img src="${img("bit.webp")}" alt="" width="120" height="120" loading="lazy"><div><h3>Book 2 is in the works</h3><p>Leo, Poppy and Bit have a new case. Want to know when it's out? Ask a grown-up to visit littleturingpress.com.</p></div></article>
