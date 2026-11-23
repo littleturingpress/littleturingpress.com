@@ -252,7 +252,7 @@
     sub = sub || "caesar";
     const tabs = [["caesar", "Cipher wheel"], ["binary", "Binary"], ["pigpen", "Pigpen"]];
     const head = `<h1 class="page">Code Lab</h1><p class="lead">Make your own secret messages. Then challenge a friend to crack them!</p>
-      <nav class="chips" aria-label="Code tools">${tabs.map(([k, t]) => `<a href="#/lab/${k}" class="chip ${k === sub ? "on" : ""}">${t}</a>`).join("")}</nav>`;
+      <nav class="chips" aria-label="Code tools">${tabs.map(([k, t]) => `<a href="#/lab/${k}" class="chip ${k === sub ? "on" : ""}">${t}</a>`).join("")}<a href="times.html" class="chip">Times tables</a></nav>`;
     if (sub === "binary") {
       const bulbs = [128, 64, 32, 16, 8, 4, 2, 1].map(v => `<button class="bulb" type="button" data-v="${v}" aria-pressed="false"><span class="pv">${v}</span><span class="bv">0</span></button>`).join("");
       return head + `<article class="card"><h2>Binary switches</h2><p>Tap a switch to turn it on. Add up the numbers above the switches that are on.</p>

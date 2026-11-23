@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Times Tables · Codebreakers</title>
+<meta name="description" content="Times table practice up to 20 with Bit. Quiz and flash cards, crack Bit's secret message. For kids aged 8–11. No ads, no tracking.">
+<meta name="theme-color" content="#081230">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<style>
+/* Times Tables · matches the Codebreakers app (app/app.css) */
+@font-face { font-family: "Inter Display"; font-weight: 900; font-display: swap; src: url("../assets/fonts/InterDisplay-Black.woff") format("woff"); }
+@font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url("../assets/fonts/Inter-Regular.woff") format("woff"); }
+@font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url("../assets/fonts/Inter-SemiBold.woff") format("woff"); }
+@font-face { font-family: "Inter"; font-weight: 700; font-display: swap; src: url("../assets/fonts/Inter-Bold.woff") format("woff"); }
+@font-face { font-family: "Code"; font-weight: 700; font-display: swap; src: url("../assets/fonts/DejaVuSansMono-Bold.woff") format("woff"); }
+:root { --night:#0d1a3a; --ink:#081230; --signal:#ffd23f; --cyan:#4cc9f0; --tang:#ff8c42; --ok:#2fbf71;
+  --paper:#f3f6fb; --card:#fff; --text:#14213d; --muted:#4a5878; --line:#dbe2ef; --tab-h:64px; }
+* { box-sizing:border-box; min-width:0; }
+html { -webkit-text-size-adjust:100%; background:var(--paper); }
+body { margin:0; background:var(--paper); color:var(--text); font-family:"Inter",system-ui,sans-serif; font-size:1.0625rem; line-height:1.55; -webkit-tap-highlight-color:transparent; overflow-x:clip;
+  background-image:linear-gradient(rgba(13,26,58,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(13,26,58,.05) 1px,transparent 1px); background-size:26px 26px; }
+img { max-width:100%; height:auto; display:block; }
+a { color:#1f6fa0; }
+h1,h2,h3 { font-family:"Inter Display","Inter",sans-serif; font-weight:900; line-height:1.1; margin:0 0 .4em; color:var(--night); letter-spacing:-.01em; }
+h2 { font-size:1.3rem; } h3 { font-size:1.12rem; }
+p { margin:0 0 .8em; }
+:focus-visible { outline:3px solid var(--cyan); outline-offset:2px; border-radius:6px; }
+.small { font-size:.9rem; color:var(--muted); }
+
+.topbar { position:sticky; top:0; z-index:5; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 16px; padding-top:max(12px,env(safe-area-inset-top)); }
+.logo { display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none; font-family:"Inter Display"; font-weight:900; font-size:1.2rem; }
+.logo b { color:var(--signal); font-weight:900; }
+.logo-mark { font-family:"Code"; font-size:.8rem; background:var(--signal); color:var(--ink); border-radius:6px; padding:3px 6px; }
+.by { font-size:.78rem; color:#b8c6e8; }
+@media (max-width:380px) { .by { display:none; } }
+.view { max-width:760px; margin:0 auto; padding:18px 16px calc(var(--tab-h) + 30px + env(safe-area-inset-bottom)); }
+.tabbar { position:fixed; left:0; right:0; bottom:0; z-index:5; display:flex; justify-content:center; background:#fff; border-top:1px solid var(--line); padding-bottom:env(safe-area-inset-bottom); box-shadow:0 -6px 20px rgba(13,26,58,.06); }
+.tabbar a { flex:1; max-width:140px; height:var(--tab-h); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; text-decoration:none; color:var(--muted); font-size:.74rem; font-weight:600; }
+.tabbar svg { width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.tabbar a.on { color:var(--night); }
+.tabbar a.on svg { stroke:var(--night); background:var(--signal); border-radius:10px; padding:2px; width:34px; height:30px; }
+.back { display:table; margin-bottom:10px; font-weight:600; text-decoration:none; }
+
+.hello { display:flex; align-items:center; gap:14px; margin:4px 0 14px; }
+.hello img { width:82px; height:82px; flex:none; filter:drop-shadow(0 6px 10px rgba(13,26,58,.2)); }
+.hello h1 { font-size:clamp(1.6rem,6vw,2.1rem); margin:0 0 6px; }
+.stats { display:flex; flex-wrap:wrap; gap:6px; margin:0; }
+.pill { font-size:.8rem; font-weight:700; background:#e3eaf8; color:var(--night); padding:3px 10px; border-radius:999px; white-space:nowrap; }
+.pill-hot { background:var(--tang); color:#fff; }
+
+.card { display:block; background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px; margin-bottom:14px; box-shadow:0 2px 0 rgba(13,26,58,.04); }
+.card-top { display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+.tagline { display:inline-block; font-size:.74rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); }
+.seg { display:inline-flex; border:2px solid var(--night); border-radius:999px; padding:3px; }
+.seg button { font:inherit; font-weight:700; font-size:.92rem; border:0; background:transparent; color:var(--night); padding:7px 14px; border-radius:999px; cursor:pointer; min-height:36px; }
+.seg button[aria-pressed=true] { background:var(--night); color:#fff; }
+
+.secret { font-family:"Code",monospace; background:var(--night); color:#5e75b3; border-radius:12px; padding:12px 14px; display:flex; flex-wrap:wrap; gap:4px 14px; font-size:clamp(1.05rem,4.2vw,1.35rem); letter-spacing:.12em; }
+.secret b { color:var(--signal); font-weight:700; }
+.bar { height:8px; border-radius:9px; background:#e3eaf8; margin:12px 0 16px; overflow:hidden; }
+.bar i { display:block; height:100%; width:0; background:var(--cyan); border-radius:9px; transition:width .3s; }
+
+.scene { perspective:1200px; height:clamp(190px,44vw,240px); position:relative; }
+.flash { position:absolute; inset:0; transform-style:preserve-3d; transition:transform .5s cubic-bezier(.3,1.3,.5,1); cursor:pointer; }
+.flash.flip { transform:rotateY(180deg); }
+.face { position:absolute; inset:0; backface-visibility:hidden; border-radius:14px; display:grid; place-items:center; text-align:center; padding:14px;
+  background:radial-gradient(ellipse at 70% 30%,#1a2d63 0%,var(--night) 60%,var(--ink) 100%); color:#fff; box-shadow:0 12px 24px rgba(13,26,58,.25); }
+.face.back { transform:rotateY(180deg); background:var(--signal); color:var(--ink); }
+.q { font-family:"Code",monospace; font-size:clamp(2.6rem,11vw,4.2rem); color:var(--cyan); line-height:1; letter-spacing:.04em; }
+.q i { font-style:normal; color:var(--signal); }
+.slot { display:inline-block; font-family:"Code",monospace; font-size:clamp(1.6rem,6vw,2.2rem); color:var(--signal); min-width:4ch; margin-top:14px; padding:0 8px 2px; border-bottom:3px solid #5e75b3; }
+.slot.right { color:var(--ok); border-color:var(--ok); }
+.slot.wrong { color:var(--tang); border-color:var(--tang); }
+.face .small { color:#b8c6e8; margin:10px 0 0; }
+.big { font-family:"Code",monospace; font-size:clamp(3.4rem,14vw,5rem); line-height:1; }
+.end h2 { color:#fff; font-size:1.6rem; margin:6px 0 4px; }
+.stars { font-size:2.2rem; color:var(--signal); letter-spacing:6px; line-height:1; }
+.missed { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:8px; }
+.missed span { font-family:"Code"; font-size:.9rem; background:#2a1d1a; color:var(--tang); border:1px solid var(--tang); border-radius:8px; padding:2px 8px; }
+
+.say { display:flex; align-items:center; gap:12px; margin:14px 0 4px; }
+.say img { width:52px; height:52px; flex:none; }
+.say.happy img { animation:hop .5s; }
+@keyframes hop { 40% { transform:translateY(-8px); } }
+.bubble { flex:1; padding:10px 12px; background:#fff7d6; border-radius:10px; font-size:.95rem; font-weight:600; min-height:44px; display:flex; align-items:center; }
+.bubble.ok { background:#e6f7ee; color:#11603a; } .bubble.no { background:#ffe8d9; color:#8a3a00; }
+
+.pad { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; max-width:380px; margin:14px auto 0; }
+.pad button { font:inherit; font-family:"Code",monospace; font-size:1.5rem; border:2px solid #c5d0e6; background:#fff; color:var(--night); border-radius:12px; min-height:56px; cursor:pointer; }
+.pad button:active { background:#e3eaf8; }
+.pad .ok { background:var(--signal); border-color:var(--signal); color:var(--ink); }
+.pad .del { background:var(--paper); font-family:"Inter"; font-size:1.2rem; }
+.btn { display:inline-flex; align-items:center; justify-content:center; font:inherit; font-weight:700; font-size:.98rem; border:2px solid var(--night); background:var(--night); color:#fff; border-radius:999px; padding:10px 18px; cursor:pointer; text-decoration:none; white-space:nowrap; min-height:44px; }
+.btn:hover { background:var(--ink); }
+.btn-ghost { background:transparent; color:var(--night); }
+.btn-ghost:hover { background:var(--signal); border-color:var(--signal); color:var(--night); }
+.row { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:14px; }
+
+.lbl { display:block; font-weight:700; font-size:.92rem; margin:14px 0 8px; }
+.lbl:first-of-type { margin-top:0; }
+.nums { display:grid; grid-template-columns:repeat(10,minmax(0,1fr)); gap:6px; }
+@media (max-width:520px) { .nums { grid-template-columns:repeat(5,minmax(0,1fr)); } }
+.nums button { font:inherit; font-family:"Code",monospace; font-size:1rem; border:2px solid #c5d0e6; background:var(--paper); color:var(--muted); border-radius:10px; min-height:44px; cursor:pointer; }
+.nums button[aria-pressed=true] { border-color:var(--night); background:var(--night); color:var(--signal); }
+.chips { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+.chip { font:inherit; font-weight:700; font-size:.9rem; color:var(--night); border:2px solid var(--night); border-radius:999px; padding:6px 14px; background:#fff; cursor:pointer; min-height:38px; }
+.chip:hover { background:var(--signal); border-color:var(--signal); }
+.opts { display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center; }
+
+.mastery { display:grid; grid-template-columns:repeat(21,minmax(0,1fr)); gap:2px; font-family:"Code",monospace; font-size:9px; text-align:center; }
+.mastery div { aspect-ratio:1; border-radius:3px; background:#e3eaf8; display:grid; place-items:center; color:var(--muted); }
+.mastery .h { background:none; }
+.mastery .s1 { background:var(--tang); } .mastery .s2 { background:var(--signal); } .mastery .s3 { background:var(--ok); }
+.legend { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; font-size:.85rem; color:var(--muted); }
+.legend i { display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:5px; vertical-align:-1px; }
+.link { background:none; border:0; padding:0; font:inherit; font-size:.92rem; font-weight:600; color:#1f6fa0; cursor:pointer; text-decoration:underline; text-underline-offset:3px; margin-top:12px; min-height:32px; }
+
+.promo { display:flex; gap:14px; align-items:center; background:var(--night); border-color:var(--night); color:#fff; margin-top:26px; text-decoration:none; }
+.promo img { width:74px; flex:none; border-radius:3px 6px 6px 3px; box-shadow:0 8px 18px rgba(0,0,0,.4); }
+.promo h3 { color:#fff; font-size:1.02rem; }
+.promo p { margin:0; color:#c8d4ef; font-size:.92rem; }
+.promo .tagline { color:var(--signal); }
+
+.pop { animation:pop .45s ease; } @keyframes pop { 40% { transform:scale(1.02); } }
+.shake { animation:shake .35s; } @keyframes shake { 20%,60% { transform:translateX(-6px); } 40%,80% { transform:translateX(6px); } }
+.confetti { position:fixed; inset:0; pointer-events:none; z-index:20; overflow:hidden; }
+.confetti i { position:absolute; top:-12px; width:9px; height:14px; border-radius:2px; animation:fall 1.8s ease-in forwards; }
+@keyframes fall { to { transform:translateY(110vh) rotate(540deg); } }
+@media (prefers-reduced-motion:reduce) { .flash { transition:none; } .pop,.shake,.say.happy img { animation:none; } .confetti { display:none; } }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="./#/today"><span class="logo-mark" aria-hidden="true">01</span><span>Code<b>breakers</b></span></a>
+  <span class="by">by Little Turing Press</span>
+</header>
+
+<main class="view">
+  <a class="back" href="./#/lab">← Code Lab</a>
+  <div class="hello">
+    <img src="../assets/img/bit.webp" width="82" height="82" alt="">
+    <div>
+      <h1>Times Tables</h1>
+      <p class="stats"><span class="pill">Card <span id="hNum">1</span>/<span id="hTot">20</span></span><span class="pill" id="hScoreP">Score <span id="hScore">0</span></span><span class="pill" id="hStreakP">Streak <span id="hStreak">0</span></span><span class="pill">⏱ <span id="hTime">0:00</span></span></p>
+    </div>
+  </div>
+
+  <section class="card" id="game">
+    <div class="card-top">
+      <span class="tagline">Crack Bit's secret message</span>
+      <div class="seg" role="group" aria-label="Mode"><button id="mQuiz" aria-pressed="true">Quiz</button><button id="mCards" aria-pressed="false">Flash cards</button></div>
+    </div>
+    <div class="secret" id="code" aria-label="Secret message"></div>
+    <div class="bar"><i id="prog"></i></div>
+
+    <div class="scene"><div class="flash" id="card" aria-live="polite"><div class="face front" id="front"></div><div class="face back" id="back"></div></div></div>
+
+    <div class="say" id="bit"><img src="../assets/img/bit.webp" width="52" height="52" alt="Bit"><div class="bubble" id="fb">Hi, I'm Bit! Each right answer cracks one letter of my secret message.</div></div>
+
+    <div id="quizCtl"><div class="pad" id="pad"></div></div>
+    <div id="cardCtl" hidden>
+      <div class="row" id="flipRow"><button class="btn" id="flipBtn">Show answer</button></div>
+      <div class="row" id="judgeRow" hidden><button class="btn btn-ghost" id="againBtn">Again</button><button class="btn" id="gotBtn">I knew it</button></div>
+    </div>
+    <div id="endWrap"></div>
+  </section>
+
+  <section class="card">
+    <h2>Set up your round</h2>
+    <span class="lbl">Tables</span>
+    <div class="nums" id="chips"></div>
+    <div class="chips" id="quick">
+      <button class="chip" data-set="2,5,10">2, 5, 10</button>
+      <button class="chip" data-set="3,4,6,7,8,9">3 to 9</button>
+      <button class="chip" data-set="1,2,3,4,5,6,7,8,9,10">1 to 10</button>
+      <button class="chip" data-set="11,12,13,14,15,16,17,18,19,20">11 to 20</button>
+      <button class="chip" data-set="1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20">All</button>
+    </div>
+    <div class="opts" style="margin-top:6px">
+      <div><span class="lbl">Multiply up to</span><div class="seg" id="maxes"><button data-m="10">×10</button><button data-m="12">×12</button><button data-m="20">×20</button></div></div>
+      <div><span class="lbl">Cards per round</span><div class="seg" id="lens"><button data-n="10">10</button><button data-n="20">20</button><button data-n="30">30</button><button data-n="0">All</button></div></div>
+    </div>
+    <div class="row" style="justify-content:flex-start"><button class="btn" id="newBtn">New round</button></div>
+  </section>
+
+  <section class="card">
+    <h2>Your progress</h2>
+    <p class="small">Every fact you have tried. Bit asks the tricky ones more often.</p>
+    <div class="mastery" id="mastery"></div>
+    <div class="legend"><span><i style="background:var(--ok)"></i>Strong</span><span><i style="background:var(--signal)"></i>Getting there</span><span><i style="background:var(--tang)"></i>Needs practice</span></div>
+    <button class="link" id="resetBtn">Reset progress</button>
+  </section>
+
+  <a class="card promo" href="./#/books">
+    <img src="../assets/img/cover.webp" width="90" height="135" alt="">
+    <div><span class="tagline">The book</span><h3>The Little Turing Codebreakers &amp; The Glitching Robot</h3><p>More codes, puzzles and a mystery with Leo, Poppy and Bit.</p></div>
+  </a>
+</main>
+
+<nav class="tabbar" aria-label="Main">
+  <a href="./#/today"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9 14.5l2 2 4-4"/></svg><span>Today</span></a>
+  <a href="./#/lab" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><path d="M12 3.5v3M20.5 12h-3M12 20.5v-3M3.5 12h3"/></svg><span>Code Lab</span></a>
+  <a href="./#/learn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg><span>Learn</span></a>
+  <a href="./#/mysteries"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5.5 5.5"/></svg><span>Mysteries</span></a>
+  <a href="./#/books"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z"/><path d="M12 6v13.5"/></svg><span>Books</span></a>
+</nav>
+
+<script>
+{
+const $=id=>document.getElementById(id);
+const store={get(k,d){try{const v=localStorage.getItem('cb-times-'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('cb-times-'+k,JSON.stringify(v))}catch(e){}}};
+const MSGS=['YOU ARE A CODEBREAKER','NUMBERS ARE YOUR SUPERPOWER','BIT SAYS GREAT JOB','KEEP CRACKING CODES','MATHS IS A SECRET KEY'];
+
+let tables=new Set(store.get('tables',[2,3,4,5,10]));
+let len=store.get('len',20), maxB=store.get('maxB',20), mode='quiz';
+let stats=store.get('stats',{});
+let msg='',deck=[],idx=0,score=0,streak=0,best=0,missed=[],typed='',locked=false,t0=0,timer=null,done=false;
+
+const level=k=>{const s=stats[k];if(!s)return 0;const n=s.r-s.w*2;return n>=3?3:n>=1?2:1};
+const weight=(a,b)=>({0:2,1:4,2:2,3:1})[level(a+'x'+b)];
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+
+function buildDeck(list){
+  if(list){deck=shuffle(list.slice());return}
+  const all=[];for(const a of tables)for(let b=1;b<=maxB;b++)all.push([a,b]);
+  if(!all.length){deck=[];return}
+  const n=len||all.length,out=[];let pool=all.slice();
+  while(out.length<n){
+    if(!pool.length)pool=all.slice();
+    const tot=pool.reduce((s,[a,b])=>s+weight(a,b),0);let r=Math.random()*tot,i=0;
+    for(;i<pool.length;i++){r-=weight(...pool[i]);if(r<=0)break}
+    out.push(pool.splice(Math.min(i,pool.length-1),1)[0]);
+  }
+  deck=out.map(([a,b])=>Math.random()<.5?[a,b]:[b,a]);
+}
+
+function start(list){
+  msg=MSGS[Math.random()*MSGS.length|0];
+  buildDeck(list);idx=0;score=0;streak=0;best=0;missed=[];typed='';done=false;locked=false;
+  $('endWrap').innerHTML='';$('quizCtl').hidden=mode!=='quiz';$('cardCtl').hidden=mode!=='cards';
+  clearInterval(timer);t0=Date.now();timer=setInterval(tick,500);tick();
+  if(!deck.length){$('front').innerHTML='<div><div class="q" style="font-size:1.6rem">Pick a table</div><p class="small">Choose at least one table below.</p></div>';$('card').classList.remove('flip');drawCode();return}
+  say("Hi, I'm Bit! Each right answer cracks one letter of my secret message.");
+  show();
+}
+function tick(){if(done)return;const s=(Date.now()-t0)/1000|0;$('hTime').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
+
+function drawCode(all){
+  const L=msg.replace(/ /g,'').length,open=all?L:Math.ceil(score/(deck.length||1)*L);let n=0;
+  $('code').innerHTML=msg.split(' ').map(w=>'<span>'+[...w].map(c=>n++<open?`<b>${c}</b>`:'_').join('')+'</span>').join('');
+}
+function say(t,m){const f=$('fb');f.textContent=t;f.className='bubble'+(m==='happy'?' ok':m==='sad'?' no':'');const b=$('bit');b.classList.remove('happy');void b.offsetWidth;if(m==='happy')b.classList.add('happy')}
+function hud(){
+  drawCode();
+  $('hNum').textContent=Math.min(idx+1,deck.length);$('hTot').textContent=deck.length;
+  $('hScore').textContent=score;$('hStreak').textContent=streak;
+  $('hStreakP').className='pill'+(streak>=3?' pill-hot':'');
+  $('prog').style.width=(idx/deck.length*100)+'%';
+}
+function show(){
+  const [a,b]=deck[idx];typed='';locked=false;
+  $('card').classList.remove('flip','pop','shake');
+  const q=`<div class="q">${a}<i> × </i>${b}</div>`;
+  if(mode==='quiz'){
+    $('front').innerHTML=`<div>${q}<span class="slot" id="ans">?</span><p class="small">Type or tap your answer</p></div>`;
+  }else{
+    $('front').innerHTML=`<div>${q}<p class="small">Think of the answer, then tap the card</p></div>`;
+    setTimeout(()=>{$('back').innerHTML=`<div><p style="margin:0;font-weight:700">${a} × ${b} =</p><div class="big">${a*b}</div></div>`},260);
+    $('flipRow').hidden=false;$('judgeRow').hidden=true;
+  }
+  hud();
+}
+function record(a,b,ok){for(const k of [a+'x'+b,b+'x'+a]){const s=stats[k]||{r:0,w:0};ok?s.r++:s.w++;stats[k]=s}store.set('stats',stats);drawMastery()}
+
+function typeDigit(d){if(mode!=='quiz'||locked||done||!deck.length||typed.length>=3)return;typed+=d;$('ans').textContent=typed}
+function del(){if(mode!=='quiz'||locked||done)return;typed=typed.slice(0,-1);$('ans').textContent=typed||'?'}
+function submit(){
+  if(mode!=='quiz'||locked||done||!typed)return;
+  const [a,b]=deck[idx],ok=+typed===a*b,ans=$('ans');locked=true;
+  if(ok){
+    score++;streak++;best=Math.max(best,streak);ans.classList.add('right');$('card').classList.add('pop');
+    say(streak>=5?`Beep boop! ${streak} in a row. My circuits are buzzing!`:['Correct! Another letter cracked.','Beep! That is right.','Yes! You are a real codebreaker.','Great work! My code is opening.'][Math.random()*4|0],'happy');
+    record(a,b,true);setTimeout(next,650);
+  }else{
+    streak=0;missed.push([a,b]);ans.classList.add('wrong');ans.textContent=typed+' → '+a*b;$('card').classList.add('shake');
+    say(`Oops, a glitch! ${a} × ${b} = ${a*b}. We will try it again later.`,'sad');
+    record(a,b,false);setTimeout(next,1800);
+  }
+  hud();
+}
+function next(){idx++;if(idx>=deck.length)finish();else show()}
+function flip(){if(mode!=='cards'||done||!deck.length)return;$('card').classList.add('flip');$('flipRow').hidden=true;$('judgeRow').hidden=false}
+function judge(ok){
+  if(done||!$('card').classList.contains('flip'))return;const [a,b]=deck[idx];record(a,b,ok);
+  if(ok){score++;streak++;best=Math.max(best,streak);say('Beep! Another letter cracked.','happy')}
+  else{streak=0;missed.push([a,b]);say(`No problem. ${a} × ${b} = ${a*b}. It will come back.`,'sad')}
+  next();
+}
+function confetti(){
+  const c=document.createElement('div');c.className='confetti';
+  c.innerHTML=Array.from({length:60},()=>`<i style="left:${Math.random()*100}%;background:${['#ffd23f','#4cc9f0','#ff8c42','#2fbf71'][Math.random()*4|0]};animation-delay:${Math.random()*.6}s"></i>`).join('');
+  document.body.appendChild(c);setTimeout(()=>c.remove(),2600);
+}
+function finish(){
+  done=true;clearInterval(timer);$('prog').style.width='100%';
+  const pct=score/deck.length,stars=pct===1?3:pct>=.8?2:pct>=.5?1:0;
+  const uniq=[...new Map(missed.map(m=>[m.join('x'),m])).values()];
+  $('card').classList.remove('flip');
+  $('front').innerHTML=`<div class="end"><div class="stars">${'★'.repeat(stars)}${'☆'.repeat(3-stars)}</div><h2>${score} out of ${deck.length}</h2><p class="small" style="margin:0">Time ${$('hTime').textContent} · best streak ${best}</p>${uniq.length?`<div class="missed">${uniq.slice(0,8).map(([a,b])=>`<span>${a}×${b}=${a*b}</span>`).join('')}</div>`:''}</div>`;
+  drawCode(true);
+  say(pct>=.8?'You cracked my secret message! I am very proud of you.':pct>=.5?'Good try! Here is my message. Can you get more right next time?':'Keep practising. Every codebreaker starts somewhere!',pct>=.5?'happy':'');
+  if(pct>=.8)confetti();
+  $('quizCtl').hidden=true;$('cardCtl').hidden=true;
+  $('endWrap').innerHTML='<div class="row">'+(uniq.length?'<button class="btn btn-ghost" id="redoBtn">Practise mistakes</button>':'')+'<button class="btn" id="againRound">Play again</button></div>';
+  $('againRound').onclick=()=>start();
+  if(uniq.length)$('redoBtn').onclick=()=>start(uniq.concat(uniq));
+}
+function setMode(m){mode=m;$('mQuiz').setAttribute('aria-pressed',m==='quiz');$('mCards').setAttribute('aria-pressed',m==='cards');$('back').innerHTML='';start()}
+
+function drawChips(){$('chips').innerHTML=Array.from({length:20},(_,i)=>i+1).map(n=>`<button data-t="${n}" aria-pressed="${tables.has(n)}">${n}</button>`).join('')}
+function drawOpts(){for(const b of $('lens').children)b.setAttribute('aria-pressed',+b.dataset.n===len);for(const b of $('maxes').children)b.setAttribute('aria-pressed',+b.dataset.m===maxB)}
+function drawMastery(){
+  let h='<div class="h">×</div>';for(let b=1;b<=20;b++)h+=`<div class="h">${b}</div>`;
+  for(let a=1;a<=20;a++){h+=`<div class="h">${a}</div>`;for(let b=1;b<=20;b++){const l=level(a+'x'+b);h+=`<div class="${l?'s'+l:''}" title="${a} × ${b} = ${a*b}"></div>`}}
+  $('mastery').innerHTML=h;
+}
+
+$('pad').innerHTML=[1,2,3,4,5,6,7,8,9].map(n=>`<button data-d="${n}">${n}</button>`).join('')+'<button class="del" data-a="del" aria-label="Delete">⌫</button><button data-d="0">0</button><button class="ok" data-a="ok" aria-label="Check">✓</button>';
+$('pad').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.d)typeDigit(b.dataset.d);else if(b.dataset.a==='del')del();else submit()});
+document.addEventListener('keydown',e=>{
+  if(e.target.closest('.seg,.nums,.chips,a'))return;
+  const flipped=$('card').classList.contains('flip');
+  if(/^[0-9]$/.test(e.key))typeDigit(e.key);
+  else if(e.key==='Backspace')del();
+  else if(e.key==='Enter'){if(mode==='quiz')submit();else flipped?judge(true):flip()}
+  else if(e.key===' '&&mode==='cards'){e.preventDefault();flipped?judge(true):flip()}
+  else if(e.key==='ArrowLeft'&&mode==='cards'&&flipped)judge(false);
+  else if(e.key==='ArrowRight'&&mode==='cards'&&flipped)judge(true);
+});
+$('card').onclick=()=>{if(mode==='cards'&&!$('card').classList.contains('flip'))flip()};
+$('flipBtn').onclick=flip;$('gotBtn').onclick=()=>judge(true);$('againBtn').onclick=()=>judge(false);
+$('mQuiz').onclick=()=>setMode('quiz');$('mCards').onclick=()=>setMode('cards');
+$('chips').onclick=e=>{const b=e.target.closest('button');if(!b)return;const n=+b.dataset.t;tables.has(n)?tables.delete(n):tables.add(n);store.set('tables',[...tables]);drawChips();start()};
+$('quick').onclick=e=>{const b=e.target.closest('button');if(!b)return;tables=new Set(b.dataset.set.split(',').map(Number));store.set('tables',[...tables]);drawChips();start()};
+$('lens').onclick=e=>{const b=e.target.closest('button');if(!b)return;len=+b.dataset.n;store.set('len',len);drawOpts();start()};
+$('maxes').onclick=e=>{const b=e.target.closest('button');if(!b)return;maxB=+b.dataset.m;store.set('maxB',maxB);drawOpts();start()};
+$('newBtn').onclick=()=>start();
+let sure=false;
+$('resetBtn').onclick=()=>{if(!sure){sure=true;$('resetBtn').textContent='Tap again to clear all progress';setTimeout(()=>{sure=false;$('resetBtn').textContent='Reset progress'},3000);return}
+  stats={};store.set('stats',stats);drawMastery();sure=false;$('resetBtn').textContent='Progress cleared'};
+
+drawChips();drawOpts();drawMastery();start();
+}
+</script>
+<script data-goatcounter="https://littleturingpress.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
