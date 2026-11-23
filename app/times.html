@@ -129,12 +129,37 @@ p { margin:0 0 .8em; }
 @keyframes fall { to { transform:translateY(110vh) rotate(540deg); } }
 @media (prefers-reduced-motion:reduce) { .flash { transition:none; } .pop,.shake,.say.happy img { animation:none; } .confetti { display:none; } }
 [hidden] { display:none !important; }
+
+/* menu */
+.top-r { display: flex; align-items: center; gap: 10px; }
+.menu-btn { display: grid; align-content: center; gap: 5px; width: 44px; height: 44px; padding: 0 10px; margin-right: -10px; background: none; border: 0; cursor: pointer; }
+.menu-btn span { display: block; height: 2.5px; border-radius: 2px; background: #fff; transition: transform .2s, opacity .2s; }
+.menu-btn[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.menu-btn[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.menu-btn[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+.app-menu { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; background: var(--ink); border-top: 1px solid rgba(184,198,232,.2); padding: 4px 16px 12px; box-shadow: 0 12px 24px rgba(8,18,48,.35); }
+.app-menu.open { display: flex; }
+.app-menu a { color: #dbe4f7; text-decoration: none; font-weight: 600; font-size: 1.05rem; padding: 12px 0; border-bottom: 1px solid rgba(184,198,232,.12); max-width: 728px; width: 100%; margin: 0 auto; }
+.app-menu a:hover { color: var(--signal); }
+.app-menu a.out { color: #b8c6e8; font-weight: 400; font-size: .98rem; }
+.app-menu a.out:first-of-type { margin-top: 8px; border-top: 1px solid rgba(184,198,232,.3); }
+.app-menu a:last-child { border-bottom: 0; }
 </style>
 </head>
 <body>
 <header class="topbar">
   <a class="logo" href="./#/today"><span class="logo-mark" aria-hidden="true">01</span><span>Code<b>breakers</b></span></a>
-  <span class="by">by Little Turing Press</span>
+  <div class="top-r"><span class="by">by Little Turing Press</span><button class="menu-btn" type="button" aria-expanded="false" aria-controls="app-menu" aria-label="Menu"><span></span><span></span><span></span></button></div>
+  <nav class="app-menu" id="app-menu" aria-label="Menu">
+    <a href="./#/today">Today's puzzles</a>
+    <a href="./#/lab">Code Lab</a>
+    <a href="times.html">Times tables</a>
+    <a href="./#/learn">Learn</a>
+    <a href="./#/mysteries">Mini mysteries</a>
+    <a href="./#/books">Books</a>
+    <a class="out" href="../">Little Turing Press website</a>
+    <a class="out" href="../#parents">Parents &amp; teachers</a>
+  </nav>
 </header>
 
 <main class="view">
@@ -353,6 +378,18 @@ $('resetBtn').onclick=()=>{if(!sure){sure=true;$('resetBtn').textContent='Tap ag
 
 drawChips();drawOpts();drawMastery();start();
 }
+</script>
+<script>
+(function () {
+  var btn = document.querySelector(".menu-btn"), nav = document.getElementById("app-menu");
+  if (!btn || !nav) return;
+  function set(open) { nav.classList.toggle("open", open); btn.setAttribute("aria-expanded", open); }
+  btn.addEventListener("click", function () { set(btn.getAttribute("aria-expanded") !== "true"); });
+  nav.addEventListener("click", function (e) { if (e.target.closest("a")) set(false); });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".topbar")) set(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") set(false); });
+  window.addEventListener("hashchange", function () { set(false); });
+})();
 </script>
 <script data-goatcounter="https://littleturingpress.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
