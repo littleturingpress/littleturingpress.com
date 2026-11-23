@@ -71,3 +71,14 @@
   document.getElementById("dial-plus").addEventListener("click", () => set(n + 1));
   set(0);
 })();
+
+// Mobile menu button
+(function () {
+  const btn = document.querySelector(".menu-btn"), nav = document.getElementById("main-nav");
+  if (!btn || !nav) return;
+  const set = open => { nav.classList.toggle("open", open); btn.setAttribute("aria-expanded", open); };
+  btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));
+  nav.addEventListener("click", e => { if (e.target.closest("a")) set(false); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") set(false); });
+  document.addEventListener("click", e => { if (!e.target.closest(".site-head")) set(false); });
+})();
